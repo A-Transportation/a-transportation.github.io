@@ -252,7 +252,7 @@ input,select {
 }
 .bottom {
   position:fixed;
-  bottom:0;
+  bottom: 0;
   left:50%;
   transform:translateX(-50%);
   width:100%;
@@ -261,8 +261,8 @@ input,select {
   border-top:1px solid #343434;
   display:flex;
   justify-content:space-around;
-  padding:12px 4px 18px;
-  z-index:10;
+  padding: 12px 4px calc(12px + env(safe-area-inset-bottom));
+  z-index: 1000;
 }
 .bottom button {
   background:none;
