@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://armandodeclesiis-a11y.github.io/a-transportation/sitemap.xml
+Sitemap: https://a-transportation.github.io/sitemap.xml
