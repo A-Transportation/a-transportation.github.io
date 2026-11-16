@@ -999,7 +999,17 @@ function selectChauffeur(name) {
 }
 
 
-const GEOAPIFY_KEY = "ef2791ff32664666b9d555ce2a930d17";
+function formatPhotonAddress(p) {
+  const bits = [];
+  const street = [p.housenumber, p.street].filter(Boolean).join(" ");
+  if (p.name) bits.push(p.name);
+  if (street && street !== p.name) bits.push(street);
+  if (p.city && p.city !== p.name) bits.push(p.city);
+  if (p.state) bits.push(p.state);
+  if (p.postcode && p.postcode !== p.name) bits.push(p.postcode);
+  bits.push("United States");
+  return bits.join(", ");
+}
 
 function setupAddressAutocomplete(inputId, listId) {
   const input = document.getElementById(inputId);
@@ -1023,11 +1033,9 @@ function setupAddressAutocomplete(inputId, listId) {
       controller = new AbortController();
 
       try {
-        const url = new URL("https://api.geoapify.com/v1/geocode/autocomplete");
-        url.searchParams.set("text", query);
-        url.searchParams.set("filter", "countrycode:us");
-        url.searchParams.set("limit", "5");
-        url.searchParams.set("apiKey", GEOAPIFY_KEY);
+        const url = new URL("https://photon.komoot.io/api/");
+        url.searchParams.set("q", query);
+        url.searchParams.set("limit", "10");
 
         const response = await fetch(url, {
           signal: controller.signal
@@ -1039,8 +1047,12 @@ function setupAddressAutocomplete(inputId, listId) {
 
         list.replaceChildren();
 
-        for (const place of data.features || []) {
-          const address = place.properties.formatted;
+        const places = (data.features || [])
+          .filter((f) => f.properties && f.properties.countrycode === "US")
+          .slice(0, 5);
+
+        for (const place of places) {
+          const address = formatPhotonAddress(place.properties);
           if (!address) continue;
 
           const item = document.createElement("button");
