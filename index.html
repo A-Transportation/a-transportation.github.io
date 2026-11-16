@@ -7,6 +7,7 @@
 <title>A Transportation | Luxury Car Rental & Chauffeur Service</title>
 <meta name="description" content="A Transportation offers luxury car rentals and professional chauffeur services. Discover premium vehicles and request your reservation online.">
   <link rel="canonical" href="https://a-transportation.github.io/">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 <style>:root {
   --bg:#08090b;
   --panel:#15171b;
@@ -264,6 +265,7 @@ input,select {
   line-height:1.6;
   margin:18px 0;
 }
+#result:empty{display:none}
 .bottom {
   position:fixed;
   bottom: 0;
@@ -291,6 +293,7 @@ input,select {
   font-size:23px;
   margin-bottom:6px;
 }
+.bottom .ico svg{display:block;margin:0 auto}
 @media(min-width:700px) {
   .app {
     margin:30px auto;
@@ -465,10 +468,11 @@ input,select {
 <h2 style="margin-top:30px">Featured Vehicles</h2>
 
 <div class="vehicle"> 
-<div class="vehicle-art" style="height:auto;"><img src="images/68456E62-EDB4-470F-B2B0-72BECE94105D.PNG" style="width:100%;height:auto;display:block;border-radius:12px;"></div><div><h3>BMW 530e M Sport</h3><div class="muted">2019 · Luxury Sedan</div></div>
-</div>
+<div class="vehicle-art" style="height:auto;"><img src="images/68456E62-EDB4-470F-B2B0-72BECE94105D.PNG" style="width:100%;height:auto;display:block;border-radius:12px;"></div><div class="vehicle-info"><h3>BMW 530e M Sport</h3><div class="muted">2019 · Luxury Sedan</div>
 <div class="features"><span>Hybrid</span><span>Automatic</span><span>Premium</span></div>
 <button class="outline" onclick="selectVehicle('BMW 530e M Sport')">View Vehicle</button>
+</div>
+</div>
 </div>
 </div>
 
@@ -542,7 +546,7 @@ input,select {
       </div>
       <div class="vehicle-info">
         <h3>Chevrolet Trax RS</h3>
-        <p class="muted">Sporty Compact SUV</p>
+        <p class="muted">2026 · Sporty Compact SUV</p>
         <div class="features">
           <span>Automatic</span><span>Comfort</span><span>SUV</span>
         </div>
@@ -611,6 +615,7 @@ input,select {
 
 </div>
 <div class="field">
+<label>Drop-off Destination</label>
 <input id="cDrop" placeholder="Enter destination" autocomplete="off" minlength="3">
   
 <div id="dropSuggestions"></div>
@@ -657,7 +662,7 @@ input,select {
 <div class="screen" id="chauffeurCars">
 <div class="content">
 <h2>Select a Chauffeur Vehicle</h2>
-<p class="muted">Illustrative vehicle categories. Availability not confirmed.</p>
+<p class="muted">Choose a vehicle category for your trip.</p>
 
 <div class="vehicle">
 <div class="vehicle-art" style="height:230px;min-height:0;padding:0;display:block;overflow:hidden;">
@@ -756,7 +761,7 @@ input,select {
 <p class="muted">Request your luxury vehicle. Our team will contact you to confirm availability and provide a personalized quote.</p>
 <div class="notice" id="selection">No vehicle selected.</div>
 <form id="bookingForm" action="https://formspree.io/f/mwllabjn" method="POST"><div class="field">
-
+<label>Pickup Location</label>
 <input type="text" id="pickupLocation" name="pickupLocation" required placeholder="Enter pickup address">
   
 <div id="bookingPickupSuggestions"></div>
@@ -806,7 +811,7 @@ input,select {
 <div class="screen" id="account">
 <div class="content">
 <h2>My Account</h2>
-<p class="muted">Your future A Transportation account.</p>
+<p class="muted">Your A Transportation account.</p>
 <div class="notice">Welcome to A Transportation. Manage your profile and reservation requests here.</div>
   <h3>My Profile</h3>
 <input type="text" placeholder="Full Name">
@@ -828,9 +833,9 @@ input,select {
 
 <nav class="bottom">
 <button onclick="showScreen('home')" class="active" data-nav="home"><span class="ico">⌂</span>Home</button>
-<button onclick="showScreen('vehicles')" data-nav="vehicles"><span class="ico">♧</span>Vehicles</button>
+<button onclick="showScreen('vehicles')" data-nav="vehicles"><span class="ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></span>Vehicles</button>
 <button onclick="showScreen('booking')" data-nav="booking"><span class="ico">▣</span>Bookings</button>
-<button onclick="showScreen('account')" data-nav="account"><span class="ico">♙</span>Account</button>
+<button onclick="showScreen('account')" data-nav="account"><span class="ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>Account</button>
 </nav>
 </div>
   <style>
@@ -1206,6 +1211,9 @@ window.location.href = "Thank-you.html";
       }
     }
   });
+
+// No past dates: block yesterday and earlier on every date field
+(function(){var d=new Date();var t=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');document.querySelectorAll('input[type="date"]').forEach(function(i){i.min=t;});})();
 </script>
 
 
