@@ -1208,5 +1208,20 @@ window.location.href = "Thank-you.html";
   });
 </script>
 
+
+<style>
+/* Wider layout on computers only (screens 900px and up).
+   Phones are untouched — they keep the same narrow app layout. */
+@media (min-width: 900px) {
+  .app { max-width: 1020px; }
+  .bottom { max-width: 1020px; }
+  .hero { padding: 48px 44px 56px; }
+  .hero h1 { font-size: 46px; }
+  .content { padding: 30px 36px 20px; }
+  .tiles { gap: 20px; }
+  .tile-art { height: 220px; }
+}
+</style>
+
 </body>
 </html>
