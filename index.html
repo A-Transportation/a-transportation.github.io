@@ -42,6 +42,7 @@ button {cursor:pointer}
     box-sizing: border-box;
 }
 .top {
+  position:relative;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -309,8 +310,9 @@ input,select {
 #details button.gold {
   position: fixed !important;
   bottom: 95px !important;
-  left: 20px !important;
-  right: 20px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  max-width: 420px !important;
   width: calc(100% - 40px) !important;
   z-index: 9999 !important;
   display: block !important;
@@ -472,8 +474,6 @@ input,select {
 <button class="outline" onclick="selectVehicle('BMW 530e M Sport')">View Vehicle</button>
 </div>
 </div>
-</div>
-</div>
 
 
 <!-- VEHICLES -->
@@ -578,7 +578,7 @@ input,select {
 <h2 id="detailName" style="padding:16px 20px 0;">BMW 530e M Sport</h2>
 <div class="notice">Rental prices and availability will be added later. No booking or payment is processed yet.</div>
 <button class="gold" onclick="showScreen('booking')">Request This Vehicle</button>
-</div></div>
+</div>
 
 <!-- CHAUFFEUR -->
 <div class="screen" id="chauffeur">
@@ -701,7 +701,7 @@ input,select {
 <form id="chauffeurFinalForm"
       action="https://formspree.io/f/xjyyjrll"
       method="POST">
-  <input type="hidden" name="_next" value="https://armandodeclesiis-a11y.github.io/a-transportation/Thank-you.html">
+  <input type="hidden" name="_next" value="https://a-transportation.github.io/Thank-you.html">
   <input type="hidden" name="Service" value="Chauffeur Service">
 
   <input type="hidden" name="Pickup Location" id="finalPickup">
@@ -773,7 +773,6 @@ input,select {
   <input type="text" id="returnLocation" name="returnLocation" required placeholder="Enter return address">
 </div>
   <div id="bookingReturnSuggestions"></div>
-  </div>
 <div class="field">
 <label>Full Name</label>
 <input id="customer" name="customer" required placeholder="Your full name">
@@ -798,11 +797,11 @@ input,select {
 
 <button class="gold" type="submit">Submit Reservation</button>
 </form>
+</div>
 <div class="notice" id="result"></div>
 <div id="bookingSuccess" class="notice" style="display:none; text-align:center;">  <h2>Thank You!</h2>
   <p>Your reservation request has been received.</p>
   <p>Our A Transportation team will contact you shortly.</p>
-</div>
 </div>
 </div>
 
@@ -836,6 +835,7 @@ input,select {
 <button onclick="showScreen('booking')" data-nav="booking"><span class="ico">▣</span>Bookings</button>
 <button onclick="showScreen('account')" data-nav="account"><span class="ico">♙</span>Account</button>
 </nav>
+</div>
   <style>
 .bottom {
   background: #0b0b0b;
@@ -861,8 +861,6 @@ input,select {
   opacity: 1;
 }
 </style>
-
-</div>
 
 <script>
 let chosenVehicle="";
@@ -961,7 +959,7 @@ function selectChauffeur(name) {
     finalDate: getValue("cDate"),
     finalTime: getValue("cTime"),
     finalPassengers: getValue("cPassengers"),
-    finalFlight: getValue("cFlight"),
+    finalFlight: getValue("flightNumber"),
     finalVehicle: name,
     finalTripType: service,
     finalHours: getValue("cHours")
