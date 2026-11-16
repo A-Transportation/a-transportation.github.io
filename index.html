@@ -601,7 +601,8 @@ input,select {
   </select>
 
   <label>Airline</label>
-  <input id="airline" placeholder="Airline name">
+  <input id="airline" placeholder="Airline name" autocomplete="off">
+  <div id="airlineSuggestions"></div>
 
   <label>Flight Number</label>
   <input id="flightNumber" placeholder="Example: UA1234">
@@ -712,6 +713,8 @@ input,select {
   <input type="hidden" name="Pickup Time" id="finalTime">
   <input type="hidden" name="Passengers" id="finalPassengers">
   <input type="hidden" name="Flight Number" id="finalFlight">
+  <input type="hidden" name="Airline" id="finalAirline">
+  <input type="hidden" name="Flight Type" id="finalFlightType">
   <input type="hidden" name="Vehicle" id="finalVehicle">
   <input type="hidden" name="Trip Type" id="finalTripType">
   <input type="hidden" name="Hours" id="finalHours">
@@ -963,6 +966,8 @@ function selectChauffeur(name) {
     finalTime: getValue("cTime"),
     finalPassengers: getValue("cPassengers"),
     finalFlight: getValue("flightNumber"),
+    finalAirline: getValue("airline"),
+    finalFlightType: getValue("flightType"),
     finalVehicle: name,
     finalTripType: service,
     finalHours: getValue("cHours")
@@ -985,6 +990,8 @@ function selectChauffeur(name) {
       details.finalTime && "Time: " + details.finalTime,
       details.finalPassengers && "Passengers: " + details.finalPassengers,
       details.finalFlight && "Flight: " + details.finalFlight,
+      details.finalAirline && "Airline: " + details.finalAirline,
+      details.finalFlightType && "Flight Type: " + details.finalFlightType,
       details.finalHours && "Hours: " + details.finalHours
     ].filter(Boolean).join(" | ");
   }
@@ -1038,6 +1045,62 @@ async function fetchNominatimAddresses(query, signal) {
     .map((r) => r.display_name)
     .filter(Boolean)
     .slice(0, 5);
+}
+
+const AIRLINES = [
+  "American Airlines", "Delta Air Lines", "United Airlines",
+  "Southwest Airlines", "Alaska Airlines", "JetBlue Airways",
+  "Spirit Airlines", "Frontier Airlines", "Hawaiian Airlines",
+  "Sun Country Airlines", "Allegiant Air", "Breeze Airways", "Avelo Airlines",
+  "Air Canada", "WestJet", "Porter Airlines",
+  "Aeromexico", "Volaris", "Viva Aerobus",
+  "LATAM Airlines", "Avianca", "Copa Airlines",
+  "British Airways", "Virgin Atlantic", "Air France", "KLM Royal Dutch Airlines",
+  "Lufthansa", "Swiss International Air Lines", "Austrian Airlines", "ITA Airways",
+  "Iberia", "TAP Air Portugal", "Aer Lingus", "Finnair", "SAS Scandinavian Airlines",
+  "Turkish Airlines", "Emirates", "Qatar Airways", "Etihad Airways", "El Al",
+  "Air India", "Singapore Airlines", "Cathay Pacific", "Japan Airlines",
+  "All Nippon Airways", "Korean Air", "Asiana Airlines", "EVA Air",
+  "China Airlines", "Air China", "Philippine Airlines", "Qantas",
+  "Air New Zealand", "Fiji Airways", "Condor", "Norse Atlantic Airways"
+];
+
+function setupAirlineAutocomplete(inputId, listId) {
+  const input = document.getElementById(inputId);
+  const list = document.getElementById(listId);
+  if (!input || !list) return;
+
+  list.style.cssText = "background:#1d2025;border-radius:10px;overflow:hidden;";
+
+  input.addEventListener("input", () => {
+    list.replaceChildren();
+
+    const query = input.value.trim().toLowerCase();
+    if (query.length < 2) return;
+
+    const starts = AIRLINES.filter((a) => a.toLowerCase().startsWith(query));
+    const contains = AIRLINES.filter(
+      (a) => !a.toLowerCase().startsWith(query) && a.toLowerCase().includes(query)
+    );
+    const matches = [...starts, ...contains].slice(0, 5);
+
+    for (const name of matches) {
+      const item = document.createElement("button");
+      item.type = "button";
+      item.textContent = name;
+      item.style.cssText =
+        "display:block;width:100%;padding:12px;text-align:left;" +
+        "background:#1d2025;color:white;border:0;" +
+        "border-bottom:1px solid #444;cursor:pointer;";
+
+      item.addEventListener("click", () => {
+        input.value = name;
+        list.replaceChildren();
+      });
+
+      list.appendChild(item);
+    }
+  });
 }
 
 function setupAddressAutocomplete(inputId, listId) {
@@ -1115,6 +1178,8 @@ setupAddressAutocomplete("rReturnLocation", "rReturnSuggestions");
 
 setupAddressAutocomplete("pickupLocation", "bookingPickupSuggestions");
 setupAddressAutocomplete("returnLocation", "bookingReturnSuggestions");
+
+setupAirlineAutocomplete("airline", "airlineSuggestions");
 
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
