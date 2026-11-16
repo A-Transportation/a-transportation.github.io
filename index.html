@@ -1011,6 +1011,35 @@ function formatPhotonAddress(p) {
   return bits.join(", ");
 }
 
+async function fetchPhotonAddresses(query, signal) {
+  const url = new URL("https://photon.komoot.io/api/");
+  url.searchParams.set("q", query);
+  url.searchParams.set("limit", "10");
+  const response = await fetch(url, { signal });
+  if (!response.ok) throw new Error("Address search failed");
+  const data = await response.json();
+  return (data.features || [])
+    .filter((f) => f.properties && f.properties.countrycode === "US")
+    .slice(0, 5)
+    .map((f) => formatPhotonAddress(f.properties))
+    .filter(Boolean);
+}
+
+async function fetchNominatimAddresses(query, signal) {
+  const url = new URL("https://nominatim.openstreetmap.org/search");
+  url.searchParams.set("format", "json");
+  url.searchParams.set("countrycodes", "us");
+  url.searchParams.set("limit", "5");
+  url.searchParams.set("q", query);
+  const response = await fetch(url, { signal });
+  if (!response.ok) throw new Error("Address search failed");
+  const data = await response.json();
+  return (Array.isArray(data) ? data : [])
+    .map((r) => r.display_name)
+    .filter(Boolean)
+    .slice(0, 5);
+}
+
 function setupAddressAutocomplete(inputId, listId) {
   const input = document.getElementById(inputId);
   const list = document.getElementById(listId);
@@ -1033,26 +1062,24 @@ function setupAddressAutocomplete(inputId, listId) {
       controller = new AbortController();
 
       try {
-        const url = new URL("https://photon.komoot.io/api/");
-        url.searchParams.set("q", query);
-        url.searchParams.set("limit", "10");
-
-        const response = await fetch(url, {
-          signal: controller.signal
-        });
-        if (!response.ok) throw new Error("Address search failed");
-
-        const data = await response.json();
+        let addresses = [];
+        try {
+          addresses = await fetchPhotonAddresses(query, controller.signal);
+        } catch (e) {
+          if (e.name === "AbortError") throw e;
+        }
+        if (!addresses.length) {
+          try {
+            addresses = await fetchNominatimAddresses(query, controller.signal);
+          } catch (e) {
+            if (e.name === "AbortError") throw e;
+          }
+        }
         if (input.value.trim() !== query) return;
 
         list.replaceChildren();
 
-        const places = (data.features || [])
-          .filter((f) => f.properties && f.properties.countrycode === "US")
-          .slice(0, 5);
-
-        for (const place of places) {
-          const address = formatPhotonAddress(place.properties);
+        for (const address of addresses) {
           if (!address) continue;
 
           const item = document.createElement("button");
