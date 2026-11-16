@@ -39,7 +39,7 @@ button {cursor:pointer}
     overflow: hidden !important;
 }
   form, .screen, .view {
-    padding-bottom: 80px !important;
+    padding-bottom: calc(76px + env(safe-area-inset-bottom)) !important;
     box-sizing: border-box;
 }
 .top {
@@ -308,6 +308,11 @@ input,select {
 /* Fix vehicle details and request button */
 #details {
   padding-bottom: 130px !important;
+}
+
+/* Fix chauffeur search button clearing the fixed bottom nav */
+#chauffeur {
+  padding-bottom: calc(130px + env(safe-area-inset-bottom)) !important;
 }
 
 #details button.gold {
@@ -829,7 +834,7 @@ input,select {
 </div>
 
 
-<footer style="text-align:center;padding:20px 16px calc(100px + env(safe-area-inset-bottom));color:#a5a6aa;font-size:12px;line-height:1.9;border-top:1px solid #282828;">
+<footer style="text-align:center;padding:12px 16px calc(76px + env(safe-area-inset-bottom));color:#a5a6aa;font-size:12px;line-height:1.9;border-top:1px solid #282828;">
 <a href="tel:+12135520950" style="color:#e8bb75;text-decoration:none">(213) 552-0950</a> &nbsp;&middot;&nbsp; Beverly Hills, California<br>
 <a href="mailto:info@a-transportation.us" style="color:#e8bb75;text-decoration:none">info@a-transportation.us</a><br>
 <span style="color:#777">&copy; 2026 A Transportation &mdash; Luxury Car Rental &amp; Chauffeur Service</span>
