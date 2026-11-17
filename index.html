@@ -47,7 +47,7 @@ button {cursor:pointer}
   position:relative;
   display:flex;
   align-items:center;
-  justify-content:space-between;
+  justify-content:center;
   padding:23px 20px;
   background:#08090b;
   border-bottom:1px solid #282828;
@@ -73,22 +73,14 @@ button {cursor:pointer}
   margin-top:6px;
 }
 .menu {
+  position:absolute;
+  left:20px;
+  top:50%;
+  transform:translateY(-50%);
   background:none;
   border:0;
   color:white;
   font-size:25px;
-}
-.partner {
-  font-size:10px;
-  font-weight:bold;
-  color:#eee;
-  text-align:right;
-}
-.partner small {
-  display:block;
-  color:var(--gold);
-  letter-spacing:2px;
-  margin-top:4px;
 }
 .screen {display:none}
 .screen.active {display:block}
@@ -313,7 +305,6 @@ input,select {
 }
 .wa-float svg { width: 30px; height: 30px; fill: #17110b; }
 .brand .logo-a { height: 46px; width: auto; display: block; margin: 0 auto; }
-.hero .partner-line { color: var(--gold); letter-spacing: 2px; font-size: 11px; text-transform: uppercase; margin-top: 12px; }
 .promise h3 { color: var(--gold); font-size: 13px; letter-spacing: 2px; margin: 16px 0 4px; }
 .steps { margin-top: 30px; }
 .steps .step { display: flex; gap: 14px; margin: 16px 0; align-items: flex-start; }
@@ -448,7 +439,6 @@ input,select {
 <div class="name">TRANSPORTATION</div>
 <div class="tag">LUXURY RENTALS & CHAUFFEUR</div>
 </div>
-<div class="partner">CROWN<br>BRIDGE<small>VISION</small></div>
 </header>
 
 <!-- HOME -->
