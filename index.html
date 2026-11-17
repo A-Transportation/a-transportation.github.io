@@ -326,6 +326,10 @@ input,select {
 .faq { margin-top: 30px; }
 .faq .qa { margin: 16px 0; }
 .faq h3 { margin: 2px 0 4px; }
+.story { margin-top: 30px; }
+.story p { margin: 12px 0; }
+.story .sig { margin-top: 18px; color: var(--gold); }
+.story .sig span { display:block; font-size: 12px; letter-spacing: 2px; margin-top: 4px; }
 .foot-cols { display:flex; flex-wrap:wrap; justify-content:center; gap:10px 56px; text-align:left; max-width:1020px; margin:0 auto 14px; }
 .foot-cols h4 { color: var(--gold); font-size: 12px; letter-spacing: 2px; margin: 10px 0 8px; }
 .foot-cols p { margin: 0; line-height: 1.9; color:#a5a6aa; }
@@ -485,6 +489,13 @@ input,select {
 <div class="qa"><h3>Which areas do you serve?</h3><p class="muted">Beverly Hills, Los Angeles, and all of California — for airport transfers and private rides.</p></div>
 <div class="qa"><h3>How do I request a booking?</h3><p class="muted">Choose a car and share your date, time, pickup location, and destination. For airport trips, add your flight details and number of passengers.</p></div>
 <div class="qa"><h3>Is my booking confirmed straight away?</h3><p class="muted">No. Every request is reviewed first, and we confirm availability before anything is booked.</p></div>
+</div>
+<div class="story" id="story">
+<h2>OUR STORY</h2>
+<p class="muted">A Transportation was built by Armando Scognamillo — Italian, born and raised in Italy — around a simple idea: luxury should feel personal.</p>
+<p class="muted">In 2020, after working as a chief operator in an office, I started thinking about my own company — a chauffeur service and rental, built the way I believe it should be done. This is not a vision on a page. It is real care, real quality — giving every guest the best experience.</p>
+<p class="muted">A Transportation began in 2026, and my hope is simple: to serve clients all around with high quality.</p>
+<p class="sig">Armando Scognamillo<span>FOUNDER &amp; CEO</span></p>
 </div>
 <div class="closing">
 <h2>READY WHEN YOU ARE</h2>
@@ -900,7 +911,7 @@ input,select {
 <footer style="text-align:center;padding:18px 16px calc(76px + env(safe-area-inset-bottom));color:#a5a6aa;font-size:12px;line-height:1.9;border-top:1px solid #282828;">
 <div class="foot-cols">
 <div><h4>WHERE WE DRIVE</h4><p>Los Angeles<br>Beverly Hills<br>All of California</p></div>
-<div><h4>EXPLORE</h4><p><a href="#" onclick="showScreen('vehicles');return false;">Our Vehicles</a><br><a href="#" onclick="showScreen('booking');return false;">Request availability</a><br><a href="#" onclick="showScreen('home');document.getElementById('faq').scrollIntoView();return false;">Good to Know</a></p></div>
+<div><h4>EXPLORE</h4><p><a href="#" onclick="showScreen('vehicles');return false;">Our Vehicles</a><br><a href="#" onclick="showScreen('booking');return false;">Request availability</a><br><a href="#" onclick="showScreen('home');document.getElementById('faq').scrollIntoView();return false;">Good to Know</a><br><a href="#" onclick="showScreen('home');document.getElementById('story').scrollIntoView();return false;">Our Story</a></p></div>
 <div><h4>FOLLOW</h4><div class="social" style="margin-top:0;"><a href="https://www.instagram.com/a.transportation.us/" target="_blank" rel="noopener" aria-label="A Transportation on Instagram"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#e8bb75" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="#e8bb75" stroke="none"/></svg></a></div></div>
 </div>
 <span style="color:#777">&copy; 2026 A Transportation</span>
