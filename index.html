@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -355,6 +356,7 @@ input,select {
   }
   .bottom {border-radius:0 0 25px 25px}
 }
+
 /* Fix vehicle details and request button */
 #details {
   padding-bottom: 130px !important;
@@ -448,6 +450,7 @@ input,select {
 </div>
 <div class="partner">CROWN<br>BRIDGE<small>VISION</small></div>
 </header>
+
 <!-- HOME -->
 <div class="screen active" id="home">
 <div class="hero">
@@ -512,6 +515,7 @@ input,select {
 </div>
 </div>
 </div>
+
 <!-- RENT -->
 <div class="screen" id="rent">
 <div class="content">
@@ -628,7 +632,7 @@ input,select {
 
     <div class="vehicle">
       <div class="vehicle-art">
-      <img src="images/51F9BE8D-81FB-4B98-A422-D8CF02BDD55C.PNG" alt="Chevrolet Trax RS">
+      <img src="images/trax-front-threequarter.jpg" alt="Chevrolet Trax RS">
       </div>
       <div class="vehicle-info">
         <h3>Chevrolet Trax RS</h3>
@@ -659,6 +663,7 @@ input,select {
  
   </div>
 </div>
+
 <!-- DETAILS -->
 <div class="screen" id="details"><div class="vehicle-art" id="detailPhoto" style="height:auto;min-height:0;display:block;background:none;"></div>
 <div id="detailGallery" style="display:none;"></div>
@@ -847,6 +852,7 @@ input,select {
 
   </div>
 </div>
+
   
 <!-- BOOKING -->
 <div class="screen" id="booking">
@@ -970,6 +976,7 @@ input,select {
   opacity: 1;
 }
 </style>
+
 <script>
 let chosenVehicle="";
 let chosenService="Car Rental";
@@ -1026,6 +1033,27 @@ const GALLERIES = {
   "images/equinox-seat-controls.jpg",
   "images/equinox-window-controls.jpg",
   "images/equinox-rear-vents.jpg"
+  ],
+  "Chevrolet Trax RS": [
+  "images/trax-front-threequarter.jpg",
+  "images/trax-front.jpg",
+  "images/trax-rear.jpg",
+  "images/trax-headlight.jpg",
+  "images/trax-wheel.jpg",
+  "images/trax-rs-badge.jpg",
+  "images/trax-badge.jpg",
+  "images/trax-cockpit.jpg",
+  "images/trax-front-seats.jpg",
+  "images/trax-rear-seats.jpg",
+  "images/trax-trunk.jpg",
+  "images/trax-screen.jpg",
+  "images/trax-rear-camera.jpg",
+  "images/trax-shifter.jpg",
+  "images/trax-steering-left.jpg",
+  "images/trax-steering-right.jpg",
+  "images/trax-seat-detail.jpg",
+  "images/trax-heated-seat.jpg",
+  "images/trax-climate.jpg"
   ]
 };
 function setDetailPhoto(src, el){
@@ -1170,6 +1198,7 @@ function selectChauffeur(name) {
   showScreen("chauffeurBooking");
 }
 
+
 function formatPhotonAddress(p) {
   const bits = [];
   const street = [p.housenumber, p.street].filter(Boolean).join(" ");
@@ -1228,6 +1257,7 @@ const AIRLINES = [
   "China Airlines", "Air China", "Philippine Airlines", "Qantas",
   "Air New Zealand", "Fiji Airways", "Condor", "Norse Atlantic Airways"
 ];
+
 function setupAirlineAutocomplete(inputId, listId) {
   const input = document.getElementById(inputId);
   const list = document.getElementById(listId);
@@ -1438,6 +1468,7 @@ if (booking) {
   }
 });
 </script>
+
 <script>
 document.getElementById("chauffeurFinalForm")
   ?.addEventListener("submit", async function(event) {
