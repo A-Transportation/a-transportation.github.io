@@ -558,7 +558,7 @@ input,select {
 <h2 style="margin-top:30px">Featured Vehicles</h2>
 
 <div class="vehicle"> 
-<div class="vehicle-art" style="height:auto;"><img src="images/68456E62-EDB4-470F-B2B0-72BECE94105D.PNG" style="width:100%;height:auto;display:block;border-radius:12px;"></div><div class="vehicle-info"><h3>BMW 530e M Sport</h3><div class="muted">2019 · Luxury Sedan</div>
+<div class="vehicle-art" style="height:auto;"><img src="images/bmw-front-threequarter.jpg" style="width:100%;height:auto;display:block;border-radius:12px;"></div><div class="vehicle-info"><h3>BMW 530e M Sport</h3><div class="muted">2019 · Luxury Sedan</div>
 <div class="features"><span>Hybrid</span><span>Automatic</span><span>Premium</span></div>
 <button class="outline" onclick="selectVehicle('BMW 530e M Sport')">View Vehicle</button>
 </div>
@@ -604,7 +604,7 @@ input,select {
 
     <div class="vehicle">
       <div class="vehicle-art">
-        <img src="images/68456E62-EDB4-470F-B2B0-72BECE94105D.PNG" alt="BMW 530e M Sport">
+        <img src="images/bmw-front-threequarter.jpg" alt="BMW 530e M Sport">
       </div>
       <div class="vehicle-info">
         <h3>BMW 530e M Sport</h3>
@@ -666,6 +666,13 @@ input,select {
 
 <!-- DETAILS -->
 <div class="screen" id="details"><div class="vehicle-art" id="detailPhoto" style="height:auto;min-height:0;display:block;background:none;"></div>
+<div id="detailGallery" style="display:none;"></div>
+<style>
+#detailGallery{padding:4px 20px 8px;}
+.gal-strip{display:flex;gap:10px;overflow-x:auto;padding:6px 2px 12px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;}
+.gal-strip img{flex:0 0 auto;width:112px;height:75px;object-fit:cover;border-radius:10px;border:2px solid #333;cursor:pointer;scroll-snap-align:start;}
+.gal-strip img.active{border-color:#b9975b;}
+</style>
 <h2 id="detailName" style="padding:16px 20px 0;">BMW 530e M Sport</h2>
 <div class="notice">Rental prices and availability will be added later. No booking or payment is processed yet.</div>
 <button class="gold" onclick="showScreen('booking')">Request This Vehicle</button>
@@ -984,6 +991,33 @@ function showScreen(id){
  window.scrollTo(0,0);
 }
 
+const BMW_GALLERY = [
+  "images/bmw-front-threequarter.jpg",
+  "images/bmw-front.jpg",
+  "images/bmw-side.jpg",
+  "images/bmw-rear.jpg",
+  "images/bmw-cockpit.jpg",
+  "images/bmw-front-seats.jpg",
+  "images/bmw-rear-seats.jpg",
+  "images/bmw-sunroof.jpg",
+  "images/bmw-start-button.jpg",
+  "images/bmw-steering-left.jpg",
+  "images/bmw-steering-right.jpg",
+  "images/bmw-idrive.jpg",
+  "images/bmw-door-controls.jpg",
+  "images/bmw-window-controls.jpg",
+  "images/bmw-trunk-buttons.jpg",
+  "images/bmw-trunk-usb.jpg",
+  "images/bmw-speaker.jpg",
+  "images/bmw-climate.jpg"
+];
+function setDetailPhoto(src, el){
+  const photo = document.getElementById("detailPhoto");
+  if (photo) photo.innerHTML = '<img src="'+src+'" style="width:100%;height:auto;display:block;object-fit:contain;">';
+  document.querySelectorAll(".gal-strip img").forEach(i=>i.classList.remove("active"));
+  if (el) el.classList.add("active");
+}
+
 function selectVehicle(name) {
   chosenVehicle = name;
   chosenService = "Car Rental";
@@ -1010,6 +1044,17 @@ function selectVehicle(name) {
     photo.innerHTML = carImage
       ? `<img src="${carImage.src}" style="width:100%;height:auto;display:block;object-fit:contain;">`
       : "🚘";
+  }
+
+  const gal = document.getElementById("detailGallery");
+  if (gal) {
+    if (name === "BMW 530e M Sport") {
+      gal.style.display = "block";
+      gal.innerHTML = '<div class="gal-strip">' + BMW_GALLERY.map((src,i)=>'<img src="'+src+'" loading="lazy" class="'+(i===0?'active':'')+'" onclick="setDetailPhoto(\''+src+'\',this)">').join('') + '</div>';
+    } else {
+      gal.style.display = "none";
+      gal.innerHTML = "";
+    }
   }
 
   document.getElementById("detailName").textContent = name;
