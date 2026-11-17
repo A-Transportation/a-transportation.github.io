@@ -334,6 +334,14 @@ input,select {
 .foot-cols h4 { color: var(--gold); font-size: 12px; letter-spacing: 2px; margin: 10px 0 8px; }
 .foot-cols p { margin: 0; line-height: 1.9; color:#a5a6aa; }
 .foot-cols a { color:#e8bb75; text-decoration:none; }
+.foot-top { text-align:left; max-width:1020px; margin:0 auto 22px; }
+.foot-top .foot-name { font-size:12px; letter-spacing:4px; color:#fff; margin-top:8px; }
+.foot-top .foot-tag { font-size:9px; letter-spacing:2px; color:var(--gold); margin-top:6px; }
+.foot-contact { margin:16px 0 0; line-height:1.9; }
+.foot-contact a { color:#e8e8e8; text-decoration:none; }
+.foot-icons { margin-top:16px; }
+.foot-icons a { display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border:1px solid #3a3a3a; border-radius:50%; }
+.foot-div { border:0; border-top:1px solid #282828; max-width:1020px; margin:6px auto 14px; }
 @media(min-width:700px) {
   .app {
     margin:30px auto;
@@ -908,11 +916,19 @@ input,select {
 
 
 <footer style="text-align:center;padding:18px 16px calc(76px + env(safe-area-inset-bottom));color:#a5a6aa;font-size:12px;line-height:1.9;border-top:1px solid #282828;">
+<div class="foot-top">
+<img src="logo-a-white.png" alt="A Transportation" style="height:46px;width:auto;">
+<div class="foot-name">TRANSPORTATION</div>
+<div class="foot-tag">LUXURY RENTALS &amp; CHAUFFEUR</div>
+<p class="foot-contact"><a href="tel:+12135520950">+1 (213) 552-0950</a><br><a href="mailto:info@a-transportation.us">info@a-transportation.us</a></p>
+<div class="foot-icons"><a href="https://www.instagram.com/a.transportation.us/" target="_blank" rel="noopener" aria-label="A Transportation on Instagram"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#e8bb75" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="#e8bb75" stroke="none"/></svg></a></div>
+</div>
 <div class="foot-cols">
 <div><h4>WHERE WE DRIVE</h4><p>Los Angeles<br>Beverly Hills<br>All of California</p></div>
 <div><h4>EXPLORE</h4><p><a href="#" onclick="showScreen('vehicles');return false;">Our Vehicles</a><br><a href="#" onclick="showScreen('booking');return false;">Request availability</a><br><a href="#" onclick="showScreen('home');document.getElementById('faq').scrollIntoView();return false;">Good to Know</a><br><a href="#" onclick="showScreen('home');document.getElementById('story').scrollIntoView();return false;">Our Story</a></p></div>
-<div><h4>FOLLOW</h4><div class="social" style="margin-top:0;"><a href="https://www.instagram.com/a.transportation.us/" target="_blank" rel="noopener" aria-label="A Transportation on Instagram"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#e8bb75" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="#e8bb75" stroke="none"/></svg></a></div></div>
+<div><h4>CONTACT</h4><p><a href="https://wa.me/13235532021" target="_blank" rel="noopener">Chat on WhatsApp</a><br><a href="mailto:info@a-transportation.us">Email us</a><br><a href="tel:+12135520950">Call us</a></p></div>
 </div>
+<hr class="foot-div">
 <span style="color:#777">&copy; 2026 A Transportation</span>
 </footer>
 
