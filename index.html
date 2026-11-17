@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -356,7 +355,6 @@ input,select {
   }
   .bottom {border-radius:0 0 25px 25px}
 }
-
 /* Fix vehicle details and request button */
 #details {
   padding-bottom: 130px !important;
@@ -450,7 +448,6 @@ input,select {
 </div>
 <div class="partner">CROWN<br>BRIDGE<small>VISION</small></div>
 </header>
-
 <!-- HOME -->
 <div class="screen active" id="home">
 <div class="hero">
@@ -515,7 +512,6 @@ input,select {
 </div>
 </div>
 </div>
-
 <!-- RENT -->
 <div class="screen" id="rent">
 <div class="content">
@@ -618,7 +614,7 @@ input,select {
 
     <div class="vehicle">
       <div class="vehicle-art">
-        <img src="images/D42C8558-2AD5-4793-98B1-53017E8C9246.PNG" alt="Chevrolet Equinox EV">
+        <img src="images/equinox-front-threequarter.jpg" alt="Chevrolet Equinox EV">
       </div>
       <div class="vehicle-info">
         <h3>Chevrolet Equinox EV</h3>
@@ -663,7 +659,6 @@ input,select {
  
   </div>
 </div>
-
 <!-- DETAILS -->
 <div class="screen" id="details"><div class="vehicle-art" id="detailPhoto" style="height:auto;min-height:0;display:block;background:none;"></div>
 <div id="detailGallery" style="display:none;"></div>
@@ -852,7 +847,6 @@ input,select {
 
   </div>
 </div>
-
   
 <!-- BOOKING -->
 <div class="screen" id="booking">
@@ -976,7 +970,6 @@ input,select {
   opacity: 1;
 }
 </style>
-
 <script>
 let chosenVehicle="";
 let chosenService="Car Rental";
@@ -991,7 +984,8 @@ function showScreen(id){
  window.scrollTo(0,0);
 }
 
-const BMW_GALLERY = [
+const GALLERIES = {
+  "BMW 530e M Sport": [
   "images/bmw-front-threequarter.jpg",
   "images/bmw-front.jpg",
   "images/bmw-side.jpg",
@@ -1010,7 +1004,30 @@ const BMW_GALLERY = [
   "images/bmw-trunk-usb.jpg",
   "images/bmw-speaker.jpg",
   "images/bmw-climate.jpg"
-];
+  ],
+  "Chevrolet Equinox EV": [
+  "images/equinox-front-threequarter.jpg",
+  "images/equinox-front.jpg",
+  "images/equinox-side.jpg",
+  "images/equinox-side-right.jpg",
+  "images/equinox-rear.jpg",
+  "images/equinox-headlight.jpg",
+  "images/equinox-front-wheel.jpg",
+  "images/equinox-badge.jpg",
+  "images/equinox-cockpit.jpg",
+  "images/equinox-front-seats.jpg",
+  "images/equinox-rear-seats.jpg",
+  "images/equinox-trunk.jpg",
+  "images/equinox-screen.jpg",
+  "images/equinox-gear-selector.jpg",
+  "images/equinox-park-brake.jpg",
+  "images/equinox-steering-left.jpg",
+  "images/equinox-steering-right.jpg",
+  "images/equinox-seat-controls.jpg",
+  "images/equinox-window-controls.jpg",
+  "images/equinox-rear-vents.jpg"
+  ]
+};
 function setDetailPhoto(src, el){
   const photo = document.getElementById("detailPhoto");
   if (photo) photo.innerHTML = '<img src="'+src+'" style="width:100%;height:auto;display:block;object-fit:contain;">';
@@ -1048,9 +1065,10 @@ function selectVehicle(name) {
 
   const gal = document.getElementById("detailGallery");
   if (gal) {
-    if (name === "BMW 530e M Sport") {
+    const galleryList = GALLERIES[name];
+    if (galleryList) {
       gal.style.display = "block";
-      gal.innerHTML = '<div class="gal-strip">' + BMW_GALLERY.map((src,i)=>'<img src="'+src+'" loading="lazy" class="'+(i===0?'active':'')+'" onclick="setDetailPhoto(\''+src+'\',this)">').join('') + '</div>';
+      gal.innerHTML = '<div class="gal-strip">' + galleryList.map((src,i)=>'<img src="'+src+'" loading="lazy" class="'+(i===0?'active':'')+'" onclick="setDetailPhoto(\''+src+'\',this)">').join('') + '</div>';
     } else {
       gal.style.display = "none";
       gal.innerHTML = "";
@@ -1152,7 +1170,6 @@ function selectChauffeur(name) {
   showScreen("chauffeurBooking");
 }
 
-
 function formatPhotonAddress(p) {
   const bits = [];
   const street = [p.housenumber, p.street].filter(Boolean).join(" ");
@@ -1211,7 +1228,6 @@ const AIRLINES = [
   "China Airlines", "Air China", "Philippine Airlines", "Qantas",
   "Air New Zealand", "Fiji Airways", "Condor", "Norse Atlantic Airways"
 ];
-
 function setupAirlineAutocomplete(inputId, listId) {
   const input = document.getElementById(inputId);
   const list = document.getElementById(listId);
@@ -1422,7 +1438,6 @@ if (booking) {
   }
 });
 </script>
-
 <script>
 document.getElementById("chauffeurFinalForm")
   ?.addEventListener("submit", async function(event) {
