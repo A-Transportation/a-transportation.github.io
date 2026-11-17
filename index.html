@@ -323,6 +323,13 @@ input,select {
 .closing a { color: #e8bb75; text-decoration: none; }
 .social { margin-top: 10px; }
 .social a { display: inline-block; }
+.faq { margin-top: 30px; }
+.faq .qa { margin: 16px 0; }
+.faq h3 { margin: 2px 0 4px; }
+.foot-cols { display:flex; flex-wrap:wrap; justify-content:center; gap:10px 56px; text-align:left; max-width:1020px; margin:0 auto 14px; }
+.foot-cols h4 { color: var(--gold); font-size: 12px; letter-spacing: 2px; margin: 10px 0 8px; }
+.foot-cols p { margin: 0; line-height: 1.9; color:#a5a6aa; }
+.foot-cols a { color:#e8bb75; text-decoration:none; }
 @media(min-width:700px) {
   .app {
     margin:30px auto;
@@ -471,6 +478,13 @@ input,select {
 <div class="step"><span class="num">1</span><div><h3>Request availability</h3><p class="muted">Tell us the car, the dates, and where you need it.</p></div></div>
 <div class="step"><span class="num">2</span><div><h3>We confirm personally</h3><p class="muted">A member of our team replies and confirms your booking.</p></div></div>
 <div class="step"><span class="num">3</span><div><h3>Enjoy the ride</h3><p class="muted">Your vehicle is delivered, and the journey is yours.</p></div></div>
+</div>
+<div class="faq" id="faq">
+<h2>GOOD TO KNOW</h2>
+<div class="qa"><h3>Is a car available for my date?</h3><p class="muted">Availability varies — our cars are also listed on Turo. Request availability for your date and we will review your request and confirm.</p></div>
+<div class="qa"><h3>Which areas do you serve?</h3><p class="muted">Beverly Hills, Los Angeles, and all of California — for airport transfers and private rides.</p></div>
+<div class="qa"><h3>How do I request a booking?</h3><p class="muted">Choose a car and share your date, time, pickup location, and destination. For airport trips, add your flight details and number of passengers.</p></div>
+<div class="qa"><h3>Is my booking confirmed straight away?</h3><p class="muted">No. Every request is reviewed first, and we confirm availability before anything is booked.</p></div>
 </div>
 <div class="closing">
 <h2>READY WHEN YOU ARE</h2>
@@ -883,10 +897,12 @@ input,select {
 </div>
 
 
-<footer style="text-align:center;padding:12px 16px calc(76px + env(safe-area-inset-bottom));color:#a5a6aa;font-size:12px;line-height:1.9;border-top:1px solid #282828;">
-<a href="tel:+12135520950" style="color:#e8bb75;text-decoration:none">(213) 552-0950</a> &nbsp;&middot;&nbsp; Beverly Hills, California<br>
-<a href="mailto:info@a-transportation.us" style="color:#e8bb75;text-decoration:none">info@a-transportation.us</a><br>
-<div class="social"><a href="https://www.instagram.com/a.transportation.us/" target="_blank" rel="noopener" aria-label="A Transportation on Instagram"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#e8bb75" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="#e8bb75" stroke="none"/></svg></a></div>
+<footer style="text-align:center;padding:18px 16px calc(76px + env(safe-area-inset-bottom));color:#a5a6aa;font-size:12px;line-height:1.9;border-top:1px solid #282828;">
+<div class="foot-cols">
+<div><h4>WHERE WE DRIVE</h4><p>Los Angeles<br>Beverly Hills<br>All of California</p></div>
+<div><h4>EXPLORE</h4><p><a href="#" onclick="showScreen('vehicles');return false;">Our Vehicles</a><br><a href="#" onclick="showScreen('booking');return false;">Request availability</a><br><a href="#" onclick="showScreen('home');document.getElementById('faq').scrollIntoView();return false;">Good to Know</a></p></div>
+<div><h4>FOLLOW</h4><div class="social" style="margin-top:0;"><a href="https://www.instagram.com/a.transportation.us/" target="_blank" rel="noopener" aria-label="A Transportation on Instagram"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#e8bb75" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="#e8bb75" stroke="none"/></svg></a></div></div>
+</div>
 <span style="color:#777">&copy; 2026 A Transportation</span>
 </footer>
 
