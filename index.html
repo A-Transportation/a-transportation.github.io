@@ -491,7 +491,7 @@ input,select {
 <div class="tile-body">
 <h3>GROUP TRAVEL</h3>
 <p>Mercedes Sprinter, chauffeur-driven. Lounge seats for the whole group — travel together, in comfort.</p>
-<button onclick="showScreen('chauffeur')">Request Availability →</button>
+<button onclick="showScreen('vehicles')">See the Sprinter →</button>
 </div>
 </div>
 <div class="steps">
@@ -579,6 +579,7 @@ input,select {
     <h2>Our Fleet</h2>
 <p class="muted" style="color:#b9975b;letter-spacing:3px;font-size:12px;">YOUR JOURNEY, OUR SIGNATURE</p>
 <p style="color:#ccc;line-height:1.8;text-align:center;">Discover a curated collection of exceptional vehicles. Every detail designed for comfort, elegance, and unforgettable journeys.</p>
+<p class="muted" style="text-align:center;">Cars marked <span style="color:#b9975b;">CHAUFFEUR ONLY</span> come with a driver — they can't be rented to drive yourself.</p>
     <style>
       #vehicles .vehicle {
         overflow: hidden;
@@ -606,6 +607,11 @@ input,select {
       #vehicles .content {
         padding-bottom: 110px;
       }
+      .pick-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0;}
+      .pick-card{border:1px solid #333;border-radius:12px;overflow:hidden;cursor:pointer;background:#141414;}
+      .pick-card img{width:100%;height:86px;object-fit:cover;display:block;}
+      .pick-card div{padding:8px 10px;font-size:13px;}
+      .pick-card.selected{border-color:#b9975b;box-shadow:0 0 0 1px #b9975b;}
     </style>
 
     <div class="vehicle">
@@ -614,6 +620,7 @@ input,select {
       </div>
       <div class="vehicle-info">
         <h3>BMW 530e M Sport</h3>
+        <span style="display:inline-block;margin:2px 0 8px;padding:3px 10px;border:1px solid #b9975b;border-radius:20px;font-size:11px;letter-spacing:2px;color:#b9975b;">RENTAL &amp; CHAUFFEUR</span>
         <p class="muted">2019 · Luxury Plug-in Hybrid Sedan</p>
         <div class="features">
           <span>Automatic</span><span>Hybrid</span><span>Premium</span>
@@ -628,6 +635,7 @@ input,select {
       </div>
       <div class="vehicle-info">
         <h3>Chevrolet Equinox EV</h3>
+        <span style="display:inline-block;margin:2px 0 8px;padding:3px 10px;border:1px solid #555;border-radius:20px;font-size:11px;letter-spacing:2px;color:#ccc;">RENTAL</span>
         <p class="muted">2026 · Electric SUV</p>
         <div class="features">
           <span>Automatic</span><span>Electric</span><span>SUV</span>
@@ -642,6 +650,7 @@ input,select {
       </div>
       <div class="vehicle-info">
         <h3>Chevrolet Trax RS</h3>
+        <span style="display:inline-block;margin:2px 0 8px;padding:3px 10px;border:1px solid #555;border-radius:20px;font-size:11px;letter-spacing:2px;color:#ccc;">RENTAL</span>
         <p class="muted">2026 · Sporty Compact SUV</p>
         <div class="features">
           <span>Automatic</span><span>Comfort</span><span>SUV</span>
@@ -657,6 +666,7 @@ input,select {
   </div>
   <div class="vehicle-info">
     <h3>Chevrolet Sonic LT</h3>
+    <span style="display:inline-block;margin:2px 0 8px;padding:3px 10px;border:1px solid #555;border-radius:20px;font-size:11px;letter-spacing:2px;color:#ccc;">RENTAL</span>
     <p class="muted">2017 · White Sedan</p>
     <div class="features">
       <span>Automatic</span>
@@ -667,10 +677,38 @@ input,select {
   </div>
 </div>
 
-<div class="group-note" style="margin:18px 20px 26px;padding:18px;border:1px solid #b9975b;border-radius:12px;text-align:center;">
-  <h3 style="margin:0 0 6px;">TRAVELING WITH A GROUP?</h3>
-  <p class="muted" style="margin:0 0 12px;">The Mercedes Sprinter is chauffeur-driven only — it can't be rented to drive yourself.</p>
-  <button class="gold" onclick="showScreen('chauffeur')">See Group Travel →</button>
+<div class="vehicle">
+  <div class="vehicle-art">
+    <img src="images/sprinter-front-threequarter.jpg" alt="Mercedes-Benz Sprinter">
+  </div>
+  <div class="vehicle-info">
+    <h3>Mercedes-Benz Sprinter</h3>
+    <span style="display:inline-block;margin:2px 0 8px;padding:3px 10px;border:1px solid #b9975b;border-radius:20px;font-size:11px;letter-spacing:2px;color:#b9975b;">CHAUFFEUR ONLY</span>
+    <p class="muted">Luxury Group Van</p>
+    <div class="features">
+      <span>Chauffeur-Driven</span>
+      <span>Group Travel</span>
+      <span>Lounge Seats</span>
+    </div>
+    <button class="gold" onclick="showScreen('chauffeur')">Book a Chauffeur →</button>
+  </div>
+</div>
+
+<div class="vehicle">
+  <div class="vehicle-art">
+    <img src="escalade-front-threequarter.jpg" alt="Cadillac Escalade">
+  </div>
+  <div class="vehicle-info">
+    <h3>Cadillac Escalade</h3>
+    <span style="display:inline-block;margin:2px 0 8px;padding:3px 10px;border:1px solid #b9975b;border-radius:20px;font-size:11px;letter-spacing:2px;color:#b9975b;">CHAUFFEUR ONLY</span>
+    <p class="muted">Luxury SUV</p>
+    <div class="features">
+      <span>Chauffeur-Driven</span>
+      <span>Luxury SUV</span>
+      <span>Premium</span>
+    </div>
+    <button class="gold" onclick="showScreen('chauffeur')">Book a Chauffeur →</button>
+  </div>
 </div>
  
   </div>
@@ -820,7 +858,13 @@ input,select {
       Your selected chauffeur vehicle
     </div>
 
-    
+    <h3 style="margin-top:18px;">Choose your vehicle</h3>
+    <div class="pick-grid" id="chauffeurPickGrid">
+      <div class="pick-card" data-vehicle="BMW 530e M Sport" onclick="pickChauffeurVehicle('BMW 530e M Sport')"><img src="images/bmw-front-threequarter.jpg" alt="BMW 530e M Sport"><div>BMW 530e M Sport</div></div>
+      <div class="pick-card" data-vehicle="Cadillac Escalade" onclick="pickChauffeurVehicle('Cadillac Escalade')"><img src="escalade-front-threequarter.jpg" alt="Cadillac Escalade"><div>Cadillac Escalade</div></div>
+      <div class="pick-card" data-vehicle="Mercedes Sprinter" onclick="pickChauffeurVehicle('Mercedes Sprinter')"><img src="images/sprinter-front-threequarter.jpg" alt="Mercedes-Benz Sprinter"><div>Mercedes Sprinter</div></div>
+    </div>
+
 <form id="chauffeurFinalForm"
       action="https://formspree.io/f/xjyyjrll"
       method="POST">
@@ -883,6 +927,13 @@ input,select {
 <h2>Reservation Request</h2>
 <p class="muted">Request your luxury vehicle. Our team will contact you to confirm availability and provide a personalized quote.</p>
 <div class="notice" id="selection">No vehicle selected.</div>
+<h3 style="margin-top:18px;">Choose your vehicle</h3>
+<div class="pick-grid" id="rentalPickGrid">
+  <div class="pick-card" data-vehicle="BMW 530e M Sport" onclick="pickRentalVehicle('BMW 530e M Sport')"><img src="images/bmw-front-threequarter.jpg" alt="BMW 530e M Sport"><div>BMW 530e M Sport</div></div>
+  <div class="pick-card" data-vehicle="Chevrolet Equinox EV" onclick="pickRentalVehicle('Chevrolet Equinox EV')"><img src="images/equinox-front-threequarter.jpg" alt="Chevrolet Equinox EV"><div>Chevrolet Equinox EV</div></div>
+  <div class="pick-card" data-vehicle="Chevrolet Trax RS" onclick="pickRentalVehicle('Chevrolet Trax RS')"><img src="images/trax-front-threequarter.jpg" alt="Chevrolet Trax RS"><div>Chevrolet Trax RS</div></div>
+  <div class="pick-card" data-vehicle="Chevrolet Sonic LT" onclick="pickRentalVehicle('Chevrolet Sonic LT')"><img src="images/sonic-front-threequarter.jpg" alt="Chevrolet Sonic LT"><div>Chevrolet Sonic LT</div></div>
+</div>
 <form id="bookingForm" action="https://formspree.io/f/mwllabjn" method="POST"><div class="field">
 <label>Pickup Location</label>
 <input type="text" id="pickupLocation" name="pickupLocation" required placeholder="Enter pickup address">
@@ -1124,6 +1175,7 @@ function selectVehicle(name) {
 
   if (detailName) detailName.textContent = name;
   if (selection) selection.textContent = "Car Rental: " + name;
+  markRentalPick(name);
 
   const cards = document.querySelectorAll(".vehicle");
   let carImage = null;
@@ -1246,8 +1298,49 @@ function selectChauffeur(name) {
 
   const selection = document.getElementById("chauffeurSelection");
   if (selection) selection.textContent = service + " - " + name;
+  markChauffeurPick(name);
 
   showScreen("chauffeurBooking");
+}
+
+
+function markRentalPick(name){
+  document.querySelectorAll("#rentalPickGrid .pick-card").forEach(c=>c.classList.toggle("selected", c.dataset.vehicle===name));
+}
+function pickRentalVehicle(name){
+  chosenVehicle = name;
+  chosenService = "Car Rental";
+  const selection = document.getElementById("selection");
+  if (selection) selection.textContent = "Car Rental: " + name;
+  markRentalPick(name);
+}
+function markChauffeurPick(name){
+  document.querySelectorAll("#chauffeurPickGrid .pick-card").forEach(c=>c.classList.toggle("selected", c.dataset.vehicle===name));
+}
+function pickChauffeurVehicle(name){
+  chosenVehicle = name;
+  chosenService = "Chauffeur Service";
+  const fv = document.getElementById("finalVehicle");
+  if (fv) fv.value = name;
+  const service = (document.getElementById("finalTripType") && document.getElementById("finalTripType").value) || "Chauffeur";
+  const selection = document.getElementById("chauffeurSelection");
+  if (selection) selection.textContent = service + " - " + name;
+  const summary = document.getElementById("chauffeurTripSummary");
+  if (summary) {
+    const v = id => { const el = document.getElementById(id); return el ? el.value : ""; };
+    summary.textContent = [service, name,
+      v("finalPickup") && "Pickup: " + v("finalPickup"),
+      v("finalDrop") && "Destination: " + v("finalDrop"),
+      v("finalDate") && "Date: " + v("finalDate"),
+      v("finalTime") && "Time: " + v("finalTime"),
+      v("finalPassengers") && "Passengers: " + v("finalPassengers"),
+      v("finalFlight") && "Flight: " + v("finalFlight"),
+      v("finalAirline") && "Airline: " + v("finalAirline"),
+      v("finalFlightType") && "Flight Type: " + v("finalFlightType"),
+      v("finalHours") && "Hours: " + v("finalHours")
+    ].filter(Boolean).join(" | ");
+  }
+  markChauffeurPick(name);
 }
 
 
