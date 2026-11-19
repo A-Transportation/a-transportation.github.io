@@ -690,6 +690,7 @@ input,select {
       <span>Group Travel</span>
       <span>Lounge Seats</span>
     </div>
+    <button class="outline" onclick="selectVehicle('Mercedes-Benz Sprinter')">View Details</button>
     <button class="gold" onclick="showScreen('chauffeur')">Book a Chauffeur →</button>
   </div>
 </div>
@@ -707,6 +708,7 @@ input,select {
       <span>Luxury SUV</span>
       <span>Premium</span>
     </div>
+    <button class="outline" onclick="selectVehicle('Cadillac Escalade')">View Details</button>
     <button class="gold" onclick="showScreen('chauffeur')">Book a Chauffeur →</button>
   </div>
 </div>
@@ -724,8 +726,8 @@ input,select {
 .gal-strip img.active{border-color:#b9975b;}
 </style>
 <h2 id="detailName" style="padding:16px 20px 0;">BMW 530e M Sport</h2>
-<div class="notice">Rental prices and availability will be added later. No booking or payment is processed yet.</div>
-<button class="gold" onclick="showScreen('booking')">Request This Vehicle</button>
+<div class="notice" id="detailNotice">Rental prices and availability will be added later. No booking or payment is processed yet.</div>
+<button class="gold" id="detailCta" onclick="showScreen('booking')">Request This Vehicle</button>
 </div>
 
 <!-- CHAUFFEUR -->
@@ -1157,6 +1159,21 @@ const GALLERIES = {
   "images/sprinter-bathroom-mirror.jpg",
   "images/sprinter-bathroom-vanity.jpg",
   "images/sprinter-rear-bathroom.jpg"
+  ],
+  "Cadillac Escalade": [
+  "escalade-front-threequarter.jpg",
+  "images/escalade-front-threequarter-2.jpg",
+  "images/escalade-front.jpg",
+  "images/escalade-side.jpg",
+  "images/escalade-side-2.jpg",
+  "images/escalade-rear-quarter.jpg",
+  "images/escalade-rear.jpg",
+  "images/escalade-grille.jpg",
+  "images/escalade-mirror.jpg",
+  "images/escalade-wheel.jpg",
+  "images/escalade-interior-seat-controls.jpg",
+  "images/escalade-interior-rear-seats.jpg",
+  "images/escalade-interior-trunk.jpg"
   ]
 };
 function setDetailPhoto(src, el){
@@ -1168,14 +1185,33 @@ function setDetailPhoto(src, el){
 
 function selectVehicle(name) {
   chosenVehicle = name;
-  chosenService = "Car Rental";
+  const chauffeurOnly = (name === "Mercedes-Benz Sprinter" || name === "Cadillac Escalade");
+  chosenService = chauffeurOnly ? "Chauffeur Service" : "Car Rental";
 
   const detailName = document.getElementById("detailName");
   const selection = document.getElementById("selection");
 
   if (detailName) detailName.textContent = name;
-  if (selection) selection.textContent = "Car Rental: " + name;
+  if (selection) selection.textContent = (chauffeurOnly ? "Chauffeur: " : "Car Rental: ") + name;
   markRentalPick(name);
+  if (chauffeurOnly) markChauffeurPick(name);
+
+  const detailCta = document.getElementById("detailCta");
+  if (detailCta) {
+    if (chauffeurOnly) {
+      detailCta.textContent = "Book a Chauffeur →";
+      detailCta.setAttribute("onclick", "showScreen('chauffeur')");
+    } else {
+      detailCta.textContent = "Request This Vehicle";
+      detailCta.setAttribute("onclick", "showScreen('booking')");
+    }
+  }
+  const detailNotice = document.getElementById("detailNotice");
+  if (detailNotice) {
+    detailNotice.textContent = chauffeurOnly
+      ? "Chauffeur service — arranged personally. No booking or payment is processed yet."
+      : "Rental prices and availability will be added later. No booking or payment is processed yet.";
+  }
 
   const cards = document.querySelectorAll(".vehicle");
   let carImage = null;
