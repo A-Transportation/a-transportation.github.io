@@ -678,6 +678,36 @@ input,select {
   </div>
 </div>
 
+
+<div class="vehicle">
+  <div class="vehicle-art">
+    <img src="web/mclaren-artura/mclaren-artura-main.jpg" alt="McLaren Artura">
+  </div>
+  <div class="vehicle-info">
+    <h3>McLaren Artura</h3>
+    <span style="display:inline-block;margin:2px 0 8px;padding:3px 10px;border:1px solid #555;border-radius:20px;font-size:11px;letter-spacing:2px;color:#ccc;">RENTAL</span>
+    <p class="muted">Black · Luxury Convertible Supercar</p>
+    <div class="features">
+      <span>Automatic</span><span>Convertible</span><span>Supercar</span>
+    </div>
+    <button class="gold" onclick="selectVehicle('McLaren Artura')">View Details</button>
+  </div>
+</div>
+
+<div class="vehicle">
+  <div class="vehicle-art">
+    <img src="web/porsche-911-cabriolet/porsche-911-cabriolet-main.jpg" alt="Porsche 911 Cabriolet">
+  </div>
+  <div class="vehicle-info">
+    <h3>Porsche 911 Cabriolet</h3>
+    <span style="display:inline-block;margin:2px 0 8px;padding:3px 10px;border:1px solid #555;border-radius:20px;font-size:11px;letter-spacing:2px;color:#ccc;">RENTAL</span>
+    <p class="muted">Blue · Luxury Convertible Sports Car</p>
+    <div class="features">
+      <span>Automatic</span><span>Convertible</span><span>Sports Car</span>
+    </div>
+    <button class="gold" onclick="selectVehicle('Porsche 911 Cabriolet')">View Details</button>
+  </div>
+</div>
 <div class="vehicle">
   <div class="vehicle-art">
     <img src="images/sprinter-front-threequarter.jpg" alt="Mercedes-Benz Sprinter">
@@ -936,6 +966,8 @@ input,select {
   <div class="pick-card" data-vehicle="Chevrolet Equinox EV" onclick="pickRentalVehicle('Chevrolet Equinox EV')"><img src="images/equinox-front-threequarter.jpg" alt="Chevrolet Equinox EV"><div>Chevrolet Equinox EV</div></div>
   <div class="pick-card" data-vehicle="Chevrolet Trax RS" onclick="pickRentalVehicle('Chevrolet Trax RS')"><img src="images/trax-front-threequarter.jpg" alt="Chevrolet Trax RS"><div>Chevrolet Trax RS</div></div>
   <div class="pick-card" data-vehicle="Chevrolet Sonic LT" onclick="pickRentalVehicle('Chevrolet Sonic LT')"><img src="images/sonic-front-threequarter.jpg" alt="Chevrolet Sonic LT"><div>Chevrolet Sonic LT</div></div>
+  <div class="pick-card" data-vehicle="McLaren Artura" onclick="pickRentalVehicle('McLaren Artura')"><img src="web/mclaren-artura/mclaren-artura-main.jpg" alt="McLaren Artura"><div>McLaren Artura</div></div>
+  <div class="pick-card" data-vehicle="Porsche 911 Cabriolet" onclick="pickRentalVehicle('Porsche 911 Cabriolet')"><img src="web/porsche-911-cabriolet/porsche-911-cabriolet-main.jpg" alt="Porsche 911 Cabriolet"><div>Porsche 911 Cabriolet</div></div>
 </div>
 <form id="bookingForm" action="https://formspree.io/f/mwllabjn" method="POST"><div class="field">
 <label>Pickup Location</label>
@@ -1175,6 +1207,24 @@ const GALLERIES = {
   "images/escalade-interior-seat-controls.jpg",
   "images/escalade-interior-rear-seats.jpg",
   "images/escalade-interior-trunk.jpg"
+  ],
+  "McLaren Artura": [
+  "web/mclaren-artura/mclaren-artura-main.jpg",
+  "web/mclaren-artura/mclaren-artura-front-doors.jpg",
+  "web/mclaren-artura/mclaren-artura-side.jpg",
+  "web/mclaren-artura/mclaren-artura-front.jpg",
+  "web/mclaren-artura/mclaren-artura-cockpit.jpg",
+  "web/mclaren-artura/mclaren-artura-seats.jpg",
+  "web/mclaren-artura/mclaren-artura-wheel.jpg"
+  ],
+  "Porsche 911 Cabriolet": [
+  "web/porsche-911-cabriolet/porsche-911-cabriolet-main.jpg",
+  "web/porsche-911-cabriolet/porsche-911-cabriolet-front-top-up.jpg",
+  "web/porsche-911-cabriolet/porsche-911-cabriolet-front.jpg",
+  "web/porsche-911-cabriolet/porsche-911-cabriolet-side.jpg",
+  "web/porsche-911-cabriolet/porsche-911-cabriolet-cockpit.jpg",
+  "web/porsche-911-cabriolet/porsche-911-cabriolet-steering.jpg",
+  "web/porsche-911-cabriolet/porsche-911-cabriolet-sill.jpg"
   ]
 };
 function setDetailPhoto(src, el){
