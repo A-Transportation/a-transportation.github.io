@@ -366,6 +366,20 @@ input,select {
   display: block !important;
 }
 
+/* Back button on detail / booking / chauffeur screens */
+.back-btn{
+  display:block;
+  margin:14px 20px 0;
+  padding:10px 16px;
+  background:none;
+  border:1px solid #b9975b;
+  border-radius:10px;
+  color:#d9b877;
+  font-size:15px;
+  cursor:pointer;
+}
+.back-btn:hover{background:#1a1712;}
+
 @media screen and (min-width: 768px) {
   #chauffeurCars .content {
     max-width: 700px !important;
@@ -883,7 +897,7 @@ input,select {
 </div>
 
 <!-- DETAILS -->
-<div class="screen" id="details"><div class="vehicle-art" id="detailPhoto" style="height:auto;min-height:0;display:block;background:none;"></div>
+<div class="screen" id="details"><button class="back-btn" onclick="showScreen('vehicles')">← Back to Vehicles</button><div class="vehicle-art" id="detailPhoto" style="height:auto;min-height:0;display:block;background:none;"></div>
 <div id="detailGallery" style="display:none;"></div>
 <style>
 #detailGallery{padding:4px 20px 8px;}
@@ -898,6 +912,7 @@ input,select {
 
 <!-- CHAUFFEUR -->
 <div class="screen" id="chauffeur">
+<button class="back-btn" onclick="showScreen('vehicles')">← Back to Vehicles</button>
 <div class="content">
 <h2>Book a Chauffeur</h2>
 <p class="muted">Professional private transportation.</p>
@@ -1091,6 +1106,7 @@ input,select {
   
 <!-- BOOKING -->
 <div class="screen" id="booking">
+<button class="back-btn" onclick="showScreen('vehicles')">← Back to Vehicles</button>
 <div class="content">
 <h2>Reservation Request</h2>
 <p class="muted">Request your luxury vehicle. Our team will contact you to confirm availability and provide a personalized quote.</p>
